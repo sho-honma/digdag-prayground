@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  digdag:
+    build:
+      context: .
+      dockerfile: dockerfile
+    volumes:
+      - .:/workspace
+    command: bash -c 'digdag server --memory --bind 0.0.0.0'
+    ports:
+      - 8080:65432

@@ -34,7 +34,7 @@ services:
     networks:
       - digdag_network
 
-  #dozzleサーバー(digdagサーバーのログ確認用)
+  #digdagのデータ保存用PostgreSQL
   digdag_postgres:
     image: postgres:14-alpine
     container_name: digdag_postgres
@@ -43,13 +43,13 @@ services:
     volumes:
       - db-store:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: digdag
-      POSTGRES_USER: digdag
-      POSTGRES_PASSWORD: digdag
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: digdag_db
     networks:
       - digdag_network
 
-  #digdagのデータ保存用PostgreSQL
+  #dozzleサーバー(digdagサーバーのログ確認用)
   dozzle_server:
     container_name: dozzle_server
     image: amir20/dozzle:latest

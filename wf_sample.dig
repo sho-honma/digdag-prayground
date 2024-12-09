@@ -1,4 +1,13 @@
 timezone: UTC
 
+_export:
+  docker:
+    image: "python:3.11.0-alpine"
+    docker: "/usr/local/bin/docker"
+    run_options: [ "-m", "1G" ]
+    pull_always: true
+    selinux: true
+    
 +step1:
-  sh>: echo "Hello, World!"
+  py>: src.sample.hoge
+

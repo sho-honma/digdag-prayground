@@ -10,7 +10,7 @@ services:
     depends_on:
       - digdag_postgres
     volumes:
-      - ./docker/digdag_server:/opt/etc/digdag
+      - ./docker/digdag_server/server.properties:/opt/etc/digdag/server.properties
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp:/tmp
     command: ["server", "-c", "/opt/etc/digdag/server.properties"]
@@ -34,11 +34,6 @@ services:
       - digdag_server
     networks:
       - digdag_network
-    develop:
-      watch:
-        - action: sync
-          path: ./
-          target: /workspace
 
   #digdagのデータ保存用PostgreSQL
   digdag_postgres:
